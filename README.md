@@ -18,10 +18,10 @@ docker run --rm -v "$(pwd):/app" -w /app spark-iceberg spark-submit query_iceber
 To test multiple avro files with nested columns
 ```shell
 python create_nested_avro_files.py
-docker run --rm -v "%cd%:/app" -w /app spark-iceberg spark-submit load_avro_recursive.py
-docker run --rm -v "%cd%:/app" -w /app spark-iceberg spark-submit query_iceberg_and_flatten.py
+docker run --rm -v "%cd%:/app" -v "%cd%/data2:data" -w /app spark-iceberg spark-submit load_avro_recursive.py
+docker run --rm -v "%cd%:/app" -v "%cd%/data2:data" -w /app spark-iceberg spark-submit query_iceberg_and_flatten.py
 # or in mac and Linux
-docker run --rm -v "$(pwd):/app" -w /app spark-iceberg spark-submit load_avro_recursive.py
-docker run --rm -v "$(pwd):/app" -w /app spark-iceberg spark-submit query_iceberg_and_flatten.py
+docker run --rm -v "$(pwd):/app" -v "$(pwd)/data2:data" -w /app spark-iceberg spark-submit load_avro_recursive.py
+docker run --rm -v "$(pwd):/app" -v "$(pwd)/data2:data" -w /app spark-iceberg spark-submit query_iceberg_and_flatten.py
 ```
 
